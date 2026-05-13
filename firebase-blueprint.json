@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information and statistics.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "wasteScore": { "type": "number", "description": "Calculated score based on food waste (lower is better)." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "createdAt"]
+    },
+    "Item": {
+      "title": "Inventory Item",
+      "description": "A food item in the user's pantry.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "purchaseDate": { "type": "string", "format": "date-time" },
+        "expiryDate": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["fresh", "used", "wasted"] },
+        "imageUrl": { "type": "string" },
+        "userId": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "purchaseDate", "expiryDate", "status", "userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile data."
+    },
+    "/users/{userId}/items/{itemId}": {
+      "schema": "Item",
+      "description": "Individual food items in the user's inventory."
+    }
+  }
+}

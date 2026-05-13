@@ -1,0 +1,6 @@
+{
+  "name": "ShelfLife",
+  "description": "An AR-inspired inventory tracker that identifies food items via camera and manages expiry dates with AI-driven waste analysis.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}
